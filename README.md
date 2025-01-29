@@ -1,3 +1,5 @@
+[English version here!](./README.md)
+
 # VERILOG_tm1638_leds_and_keys
 
 Interfacing with the Led&Key module via the TM1638 IC
