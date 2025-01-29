@@ -10,7 +10,7 @@ Interfacing with the Led&Key module via the TM1638 IC
 - **Email:** truong92cdv@gmail.com
 - **GitHub:** [truong92cdv](https://github.com/truong92cdv)
 
-## II. Demo Results
+## II. Result
 
 https://github.com/user-attachments/assets/b7c5aba8-a250-43e0-b88c-ab4844460aa1
 
