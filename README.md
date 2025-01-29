@@ -41,7 +41,7 @@ Các khung truyền dữ liệu tương ứng cần đạt được như sau:
 
 Dữ liệu được ghi vào TM1638 ở chân DIO tại mỗi cạnh lên xung CLK, dữ liệu từ TM1638 sẽ ghi vào DIO tại cạnh xuống xung CLK.
 
-Sơ đồ kết nối của module Led&Key TM1638:
+Sơ đồ kết nối của [module Led&Key TM1638](./refs/TM1638_shcematic.pdf):
 
 ![TM1638_schematic](./images/tm1638_schematic.png)
 
