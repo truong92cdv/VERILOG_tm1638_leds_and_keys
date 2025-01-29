@@ -1,93 +1,93 @@
 # VERILOG_tm1638_leds_and_keys
 
-Giao tiếp với module Led&Key qua ic TM1638
+Interfacing with the Led&Key module via the TM1638 IC
 
-## I. Tác giả
+## I. Author
 
 - **Name:** Võ Nhật Trường
 - **Email:** truong92cdv@gmail.com
 - **GitHub:** [truong92cdv](https://github.com/truong92cdv)
 
-## II. Kết quả demo
+## II. Demo Results
 
 https://github.com/user-attachments/assets/b7c5aba8-a250-43e0-b88c-ab4844460aa1
 
-- Led 7 đoạn mô phỏng bộ đếm thời gian theo định dạng **hh-mm-ss**. 
-- 8 đèn Led hàng trên có hiệu ứng dịch trái, dịch phải.
-- Các button khi ấn vào sẽ tắt hiển thị led 7 đoạn tương ứng.
+- The 7-segment LED simulates a time counter in the **hh-mm-ss** format.
+- The 8 LEDs in the top row have left and right shifting effects.
+- Pressing the buttons will turn off the corresponding 7-segment LED display.
 
-## III. Thiết bị
+## III. Hardware
 
-- ZUBoard 1CG mã XCZU1CG-1SBVA484E
-- Module điều khiển Led&Key MDU1093 tích hợp ic **TM1638**.
-- 3 đường dây tín hiệu STB, CLK, DIO, dây VCC +5V, dây GND.
+- ZUBoard 1CG model XCZU1CG-1SBVA484E
+- Led&Key control module MDU1093 with integrated **TM1638** IC.
+- Three signal lines: STB, CLK, DIO; power lines: VCC +5V and GND.
 
 ![module Led&Key TM1638](./images/module_tm1638_ledandkey.jpg)
 
 ## IV. TM1638
 
-Tham khảo [TM1638 Datasheet](./refs/TM1638.PDF).
+Refer to the [TM1638 Datasheet](./refs/TM1638.PDF).
 
-ic TM1638 giúp điều khiển led và quét phím hiệu quả với chỉ 3 dây tín hiệu: STB, CLK, DIO. Bên trong TM1638 có sẵn 16 thanh ghi 8 bit đánh địa chỉ từ 00h -> 0Fh.
+The TM1638 IC efficiently controls LEDs and scans keys using only three signal lines: STB, CLK, and DIO. Internally, the TM1638 has 16 8-bit registers, addressed from 00h to 0Fh.
 
-Có 3 chế độ giao tiếp với TM1638:
-1. Truyền dữ liệu với địa chỉ tăng tự động.
-2. Truyền dữ liệu với địa chỉ cố định.
-3. Đọc dữ liệu quét phím.
+There are three communication modes with TM1638:
+1. Data transmission with automatic address increment.
+2. Data transmission with a fixed address.
+3. Reading key scan data.
 
-Các khung truyền dữ liệu tương ứng cần đạt được như sau:
+The required data transmission frames are as follows:
 
 ![TM1638 3 transmission modes](./images/tm1638_3modes.png)
 
-Dữ liệu được ghi vào TM1638 ở chân DIO tại mỗi cạnh lên xung CLK, dữ liệu từ TM1638 sẽ ghi vào DIO tại cạnh xuống xung CLK.
+Data is written to the TM1638 via the DIO pin on the rising edge of the CLK signal, and data is read from the TM1638 on the falling edge of the CLK signal.
 
-Sơ đồ kết nối của [module Led&Key TM1638](./refs/TM1638_schematic.pdf):
+Connection diagram of the [Led&Key TM1638 module](./refs/TM1638_schematic.pdf):
 
 ![TM1638_schematic](./images/tm1638_schematic.png)
 
-## V. Source code
+## V. Source Code
 
 ### [1. clk_divider](./src/clk_divider.v)
 
-- Tạo clk 1 Hz (1s) từ clk 100 MHz của ZUBoard.
+- Generates a 1 Hz (1s) clock from the 100 MHz clock of ZUBoard.
 
 ### [2. digits](./src/digits.v)
 
-- 8 chữ số trên led 7 đoạn theo định dạng **hh-mm-ss**. Bộ đếm tăng với mỗi cạnh lên xung clk 1Hz (1s).
+- Displays 8 digits on the 7-segment LED in **hh-mm-ss** format. The counter increments on each rising edge of the 1Hz clock (1s).
 
 ### [3. bcd_to_led7seg](./src/bcd_to_led7seg.v)
 
-- Led 7 đoạn trong bài thuộc loại common cathode, đầu vào là 1 chữ số BCD 4 bit, đầu ra là 8 bit mã hóa 8 đoạn led từ DP, G, F, E, D, C, B, A.
+- The 7-segment LED in this project is of the common cathode type. The input is a 4-bit BCD digit, and the output is an 8-bit encoded signal for the LED segments DP, G, F, E, D, C, B, A.
 
 ### [4. tm1638](./src/tm1638.v)
 
-Module tạo khung truyền nhận dữ liệu giao tiếp với tm1638, cờ **rw** để báo hiệu truyền hay nhận dữ liệu.
+This module creates the data transmission and reception frames for communication with TM1638. The **rw** flag indicates whether data is being sent or received.
 
-Xung CLK đầu ra có chu kỳ T(CLK) = 2^7 * 10 ns = 1.28 us.
+The output CLK signal has a period of T(CLK) = 2^7 * 10 ns = 1.28 µs.
 
 [Testbench code](./tb/tm1638_tb.v)
 
-Waveform tm1638_tb
+Waveform of tm1638_tb
 
 ![waveform_tm1638_tb](./images/waveform_tm1638_tb.png)
 
 ### [5. top](./src/top.v)
 
-Tiến trình truyền nhận dữ liệu ở module top diễn ra gồm các bước
-1. Gửi lệnh 0x42 báo hiệu chuẩn bị nhận dữ liệu quét phím.
-2. TM1638 gửi 4 byte dữ liệu. Giải mã để xác định phím nào được nhấn.
-3. Gửi lệnh 0x40 báo hiệu chuẩn bị truyền dữ liệu, chế độ địa chỉ tăng tự động.
-4. Gửi lệnh 0xc0 thông báo địa chỉ thanh ghi đầu tiên là 00h.
-5. Gửi 16 byte dữ liệu để ghi vào thanh ghi nội của TM1638, điều khiển đèn led.
-6. Gửi lệnh 0x8f thiết lập độ sáng hiển thị tối đa.
+The data transmission and reception process in the top module occurs as follows:
+1. Send command 0x42 to indicate readiness to receive key scan data.
+2. TM1638 sends 4 bytes of data. Decode to determine which key was pressed.
+3. Send command 0x40 to indicate readiness to transmit data, with automatic address increment mode.
+4. Send command 0xc0 to specify that the first register address is 00h.
+5. Send 16 bytes of data to write to the internal registers of TM1638, controlling the LEDs.
+6. Send command 0x8f to set the maximum display brightness.
 
 [Testbench code](./tb/top_tb.v)
 
-Waveform top_tb
+Waveform of top_tb
 
 ![waveform_top_tb](./images/waveform_top_tb.png)
 
-## VI. Tham khảo
+## VI. References
 
 1. [TM1638 Datasheet](./refs/TM1638.PDF)
 2. [Module Led&Key TM1638 schematic](./refs/TM1638_schematic.pdf)
