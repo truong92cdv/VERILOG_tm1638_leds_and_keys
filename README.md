@@ -20,5 +20,8 @@ Giao tiếp với module Leds and Keys qua ic TM1638
 
 ![lcd_i2c_module](./images/module_tm1638.jpg)
 
-## Tham khảo
+## VI. Tham khảo
 
+1. [TM1638 Datasheet](./refs/TM1638.PDF)
+2. [TM1638 module schematic](./refs/TM1638_shcematic.pdf)
+3. [TM1638 project - alangarf](https://github.com/alangarf/tm1638-verilog)
