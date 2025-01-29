@@ -57,7 +57,7 @@ Module tạo khung truyền nhận dữ liệu giao tiếp với tm1638, cờ **
 
 Xung CLK đầu ra có chu kỳ T(CLK) = 2^7 * 10 ns = 1.28 us.
 
-[Testbench code](./src/tm1638_tb.v)
+[Testbench code](./tb/tm1638_tb.v)
 
 Waveform tm1638_tb
 
@@ -73,7 +73,7 @@ Tiến trình truyền nhận dữ liệu ở module top diễn ra gồm các b�
 5. Gửi 16 byte dữ liệu để ghi vào thanh ghi nội của TM1638, điều khiển đèn led.
 6. Gửi lệnh 0x8f thiết lập độ sáng hiển thị tối đa.
 
-[Testbench code](./src/top.v)
+[Testbench code](./tb/top.v)
 
 Waveform top_tb
 
