@@ -33,7 +33,7 @@ Có 3 chế độ giao tiếp với TM1638:
 
 Các khung truyền dữ liệu tương ứng cần đạt được như sau:
 
-![TM1638 3 transmission modes](./images/tm1638_3modes)
+![TM1638 3 transmission modes](./images/tm1638_3modes.png)
 
 Dữ liệu được ghi vào TM1638 ở chân DIO tại mỗi cạnh lên xung CLK, dữ liệu từ TM1638 sẽ ghi vào DIO tại cạnh xuống xung CLK.
 
@@ -41,11 +41,11 @@ Dữ liệu được ghi vào TM1638 ở chân DIO tại mỗi cạnh lên xung 
 
 Waveform tm1638_tb
 
-![waveform_tm1638_tb](./images/tm1638_tb.png)
+![waveform_tm1638_tb](./images/waveform_tm1638_tb.png)
 
 Waveform top_tb
 
-![waveform_top_tb](./images/top_tb.png)
+![waveform_top_tb](./images/waveform_top_tb.png)
 
 ## VI. Tham khảo
 
