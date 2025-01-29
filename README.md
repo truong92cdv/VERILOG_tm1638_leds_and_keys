@@ -1,6 +1,6 @@
 # VERILOG_tm1638_leds_and_keys
 
-Giao tiếp với module Leds and Keys qua ic TM1638
+Giao tiếp với module Led&Key qua ic TM1638
 
 ## I. Tác giả
 
@@ -15,10 +15,10 @@ https://github.com/user-attachments/assets/b7c5aba8-a250-43e0-b88c-ab4844460aa1
 ## III. Thiết bị
 
 - ZUBoard 1CG mã XCZU1CG-1SBVA484E
-- Module điều khiển Leds and Keys MDU1093 tích hợp ic **TM1638**.
+- Module điều khiển Led&Key MDU1093 tích hợp ic **TM1638**.
 - 3 đường dây tín hiệu STB, CLK, DIO, dây VCC +5V, dây GND.
 
-![module Leds and Keys TM1638](./images/module_tm1638.jpg)
+![module Led&Key TM1638](./images/module_tm1638_ledandkey.jpg)
 
 ## VI. Tham khảo
 
