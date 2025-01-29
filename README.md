@@ -43,7 +43,7 @@ The required data transmission frames are as follows:
 
 Data is written to the TM1638 via the DIO pin on the rising edge of the CLK signal, and data is read from the TM1638 on the falling edge of the CLK signal.
 
-Connection diagram of the [Led&Key TM1638 module](./refs/TM1638_schematic.pdf):
+Schematic diagram of the [Led&Key TM1638 module](./refs/TM1638_schematic.pdf):
 
 ![TM1638_schematic](./images/tm1638_schematic.png)
 
