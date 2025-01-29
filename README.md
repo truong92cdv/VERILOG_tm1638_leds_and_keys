@@ -1,4 +1,4 @@
-[English version here!](./README.md)
+[Vietnamese version here!](./README_VI.md)
 
 # VERILOG_tm1638_leds_and_keys
 
