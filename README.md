@@ -18,7 +18,7 @@ Giao tiếp với module Leds and Keys qua ic TM1638
 - Module điều khiển Leds and Keys MDU1093 tích hợp ic **TM1638**.
 - 3 đường dây tín hiệu STB, CLK, DIO, dây VCC +5V, dây GND.
 
-![lcd_i2c_module](./images/module_tm1638.jpg)
+![module Leds and Keys TM1638](./images/module_tm1638.jpg)
 
 ## VI. Tham khảo
 
