@@ -12,9 +12,9 @@ Giao tiếp với module Led&Key qua ic TM1638
 
 https://github.com/user-attachments/assets/b7c5aba8-a250-43e0-b88c-ab4844460aa1
 
-Led 7 đoạn mô phỏng bộ đếm thời gian theo định dạng **hh-mm-ss**. 
-8 đèn Led hàng trên có hiệu ứng dịch trái, dịch phải.
-Các button khi ấn vào sẽ tắt hiển thị led 7 đoạn tương ứng.
+- Led 7 đoạn mô phỏng bộ đếm thời gian theo định dạng **hh-mm-ss**. 
+- 8 đèn Led hàng trên có hiệu ứng dịch trái, dịch phải.
+- Các button khi ấn vào sẽ tắt hiển thị led 7 đoạn tương ứng.
 
 ## III. Thiết bị
 
