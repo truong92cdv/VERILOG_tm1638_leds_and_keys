@@ -12,6 +12,8 @@ Giao tiếp với module Leds and Keys qua ic TM1638
 
 ![demo_project](./images/demo_project.jpg)
 
+https://github.com/user-attachments/assets/b7c5aba8-a250-43e0-b88c-ab4844460aa1
+
 ## III. Thiết bị
 
 - ZUBoard 1CG mã XCZU1CG-1SBVA484E
