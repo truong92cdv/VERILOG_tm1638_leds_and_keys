@@ -13,6 +13,8 @@ module tm1638(
     output reg dio_out
     );
 
+    // for simulation:
+    // localparam CLK_DIV = 3;
     localparam CLK_DIV = 7;                 // T = 2^7 * 10 ns = 1.28 us
     localparam CLK_DIV1 = CLK_DIV - 1;
     localparam [1:0]
