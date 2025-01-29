@@ -41,7 +41,7 @@ Các khung truyền dữ liệu tương ứng cần đạt được như sau:
 
 Dữ liệu được ghi vào TM1638 ở chân DIO tại mỗi cạnh lên xung CLK, dữ liệu từ TM1638 sẽ ghi vào DIO tại cạnh xuống xung CLK.
 
-Sơ đồ kết nối của [module Led&Key TM1638](./refs/TM1638_shcematic.pdf):
+Sơ đồ kết nối của [module Led&Key TM1638](./refs/TM1638_schematic.pdf):
 
 ![TM1638_schematic](./images/tm1638_schematic.png)
 
@@ -90,5 +90,5 @@ Waveform top_tb
 ## VI. Tham khảo
 
 1. [TM1638 Datasheet](./refs/TM1638.PDF)
-2. [Module Led&Key TM1638 schematic](./refs/TM1638_shcematic.pdf)
+2. [Module Led&Key TM1638 schematic](./refs/TM1638_schematic.pdf)
 3. [TM1638 project - alangarf](https://github.com/alangarf/tm1638-verilog)
