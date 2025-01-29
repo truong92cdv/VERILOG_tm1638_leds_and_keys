@@ -39,9 +39,41 @@ Dữ liệu được ghi vào TM1638 ở chân DIO tại mỗi cạnh lên xung 
 
 ## V. Source code
 
+### [1. clk_divider](./src/clk_divider.v)
+
+- Tạo clk 1 Hz (1s) từ clk 100 MHz của ZUBoard.
+
+### [2. digits](./src/digits.v)
+
+- 8 chữ số trên led 7 đoạn theo định dạng **hh-mm-ss**. Bộ đếm tăng với mỗi cạnh lên xung clk 1Hz (1s).
+
+### [3. bcd_to_led7seg](./src/bcd_to_led7seg.v)
+
+- Led 7 đoạn trong bài thuộc loại common cathode, đầu vào là 1 chữ số BCD 4 bit, đầu ra là 8 bit mã hóa 8 đoạn led từ DP, G, F, E, D, C, B, A.
+
+### [4. tm1638](./src/tm1638.v)
+
+Module tạo khung truyền nhận dữ liệu giao tiếp với tm1638, cờ **rw** để báo hiệu truyền hay nhận dữ liệu.
+
+Xung CLK đầu ra có chu kỳ T(CLK) = 2^7 * 10 ns = 1.28 us.
+
+[Testbench code](./src/tm1638_tb.v)
+
 Waveform tm1638_tb
 
 ![waveform_tm1638_tb](./images/waveform_tm1638_tb.png)
+
+### [5. top](./src/top.v)
+
+Tiến trình truyền nhận dữ liệu ở module top diễn ra gồm các bước
+1. Gửi lệnh 0x42 báo hiệu chuẩn bị nhận dữ liệu quét phím.
+2. TM1638 gửi 4 byte dữ liệu. Giải mã để xác định phím nào được nhấn.
+3. Gửi lệnh 0x40 báo hiệu chuẩn bị truyền dữ liệu, chế độ địa chỉ tăng tự động.
+4. Gửi lệnh 0xc0 thông báo địa chỉ thanh ghi đầu tiên là 00h.
+5. Gửi 16 byte dữ liệu để ghi vào thanh ghi nội của TM1638, điều khiển đèn led.
+6. Gửi lệnh 0x8f thiết lập độ sáng hiển thị tối đa.
+
+[Testbench code](./src/top.v)
 
 Waveform top_tb
 
