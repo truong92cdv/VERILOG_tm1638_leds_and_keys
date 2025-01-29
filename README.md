@@ -12,6 +12,10 @@ Giao tiếp với module Led&Key qua ic TM1638
 
 https://github.com/user-attachments/assets/b7c5aba8-a250-43e0-b88c-ab4844460aa1
 
+Led 7 đoạn mô phỏng bộ đếm thời gian theo định dạng **hh-mm-ss**. 
+8 đèn Led hàng trên có hiệu ứng dịch trái, dịch phải.
+Các button khi ấn vào sẽ tắt hiển thị led 7 đoạn tương ứng.
+
 ## III. Thiết bị
 
 - ZUBoard 1CG mã XCZU1CG-1SBVA484E
@@ -73,7 +77,7 @@ Tiến trình truyền nhận dữ liệu ở module top diễn ra gồm các b�
 5. Gửi 16 byte dữ liệu để ghi vào thanh ghi nội của TM1638, điều khiển đèn led.
 6. Gửi lệnh 0x8f thiết lập độ sáng hiển thị tối đa.
 
-[Testbench code](./tb/top.v)
+[Testbench code](./tb/top_tb.v)
 
 Waveform top_tb
 
@@ -82,5 +86,5 @@ Waveform top_tb
 ## VI. Tham khảo
 
 1. [TM1638 Datasheet](./refs/TM1638.PDF)
-2. [TM1638 module schematic](./refs/TM1638_shcematic.pdf)
+2. [Module Led&Key TM1638 schematic](./refs/TM1638_shcematic.pdf)
 3. [TM1638 project - alangarf](https://github.com/alangarf/tm1638-verilog)
